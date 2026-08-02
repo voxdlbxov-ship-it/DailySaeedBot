@@ -1,12 +1,25 @@
 import os
-from telegram import Update
+from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 TOKEN = os.getenv("TOKEN")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [
+        ["📖 تأمل امروز", "📅 انتخاب ماه"],
+        ["📄 دانلود تجربه شخصی", "ℹ️ درباره ربات"]
+    ]
+
+    reply_markup = ReplyKeyboardMarkup(
+        keyboard,
+        resize_keyboard=True
+    )
+
     await update.message.reply_text(
-        "سلام 🌱\nبه ربات Daily Reflections فارسی خوش آمدید."
+        "سلام 🌱\n"
+        "به ربات Daily Reflections فارسی خوش آمدید.\n\n"
+        "لطفاً یک گزینه را انتخاب کنید:",
+        reply_markup=reply_markup
     )
 
 app = Application.builder().token(TOKEN).build()
