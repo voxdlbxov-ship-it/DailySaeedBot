@@ -9,9 +9,7 @@ from telegram.ext import (
     filters,
 )
 
-
 TOKEN = os.getenv("BOT_TOKEN")
-
 
 MONTH_DAYS = {
     "فروردین": 31,
@@ -135,11 +133,9 @@ async def back_to_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 app = Application.builder().token(TOKEN).build()
 
-
 app.add_handler(
     CommandHandler("start", start)
 )
-
 
 app.add_handler(
     MessageHandler(
@@ -147,7 +143,6 @@ app.add_handler(
         months,
     )
 )
-
 
 app.add_handler(
     MessageHandler(
@@ -159,14 +154,12 @@ app.add_handler(
     )
 )
 
-
 app.add_handler(
     MessageHandler(
         filters.Regex(r"^\d+$"),
         show_reflection,
     )
 )
-
 
 app.add_handler(
     MessageHandler(
@@ -175,7 +168,6 @@ app.add_handler(
     )
 )
 
-
 app.add_handler(
     MessageHandler(
         filters.Regex("^🔙 بازگشت$"),
@@ -183,46 +175,7 @@ app.add_handler(
     )
 )
 
-
-app.run_polling()        resize_keyboard=True
-    )
-
-    await update.message.reply_text(
-        "سلام 🌱\n"
-        "به ربات Daily Reflections فارسی خوش آمدید.\n\n"
-        "لطفاً یک گزینه را انتخاب کنید:",
-        reply_markup=reply_markup
-    )
-
-
-async def months(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [
-        ["فروردین", "اردیبهشت", "خرداد"],
-        ["تیر", "مرداد", "شهریور"],
-        ["مهر", "آبان", "آذر"],
-        ["دی", "بهمن", "اسفند"],
-        ["🔙 بازگشت"]
-    ]
-
-    reply_markup = ReplyKeyboardMarkup(
-        keyboard,
-        resize_keyboard=True
-    )
-
-    await update.message.reply_text(
-        "ماه مورد نظر را انتخاب کنید:",
-        reply_markup=reply_markup
-    )
-
-
-async def show_days(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    month = update.message.text
-
-    if month not in MONTH_DAYS:
-        return
-
-    days = MONTH_DAYS[month]
-
+app.run_polling()
     keyboard = []
     row = []
 
