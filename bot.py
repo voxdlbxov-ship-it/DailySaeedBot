@@ -10,7 +10,6 @@ from telegram.ext import (
 
 TOKEN = os.getenv("BOT_TOKEN")
 
-# تعداد روزهای ماه‌های شمسی
 MONTH_DAYS = {
     "فروردین": 31,
     "اردیبهشت": 31,
@@ -35,6 +34,91 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     reply_markup = ReplyKeyboardMarkup(
         keyboard,
+        resize_keyboard=True
+    )
+
+    await update.message.reply_text(
+        "سلام 🌱\n"
+        "به ربات Daily Reflections فارسی خوش آمدید.\n\n"
+        "لطفاً یک گزینه را انتخاب کنید:",
+        reply_markup=reply_markup
+    )
+
+
+async def months(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [
+        ["فروردین", "اردیبهشت", "خرداد"],
+        ["تیر", "مرداد", "شهریور"],
+        ["مهر", "آبان", "آذر"],
+        ["دی", "بهمن", "اسفند"],
+        ["🔙 بازگشت"]
+    ]
+
+    reply_markup = ReplyKeyboardMarkup(
+        keyboard,
+        resize_keyboard=True
+    )
+
+    await update.message.reply_text(
+        "ماه مورد نظر را انتخاب کنید:",
+        reply_markup=reply_markup
+    )
+
+
+async def show_days(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    month = update.message.text
+
+    if month not in MONTH_DAYS:
+        return
+
+    days = MONTH_DAYS[month]
+
+    keyboard = []
+    row = []
+
+    for day in range(1, days + 1):
+        row.append(str(day))
+
+        if len(row) == 7:
+            keyboard.append(row)
+            row = []
+
+    if row:
+        keyboard.append(row)
+
+    keyboard.append(["🔙 انتخاب ماه"])
+
+    reply_markup = ReplyKeyboardMarkup(
+        keyboard,
+        resize_keyboard=True
+    )
+
+    context.user_data["selected_month"] = month
+
+    await update.message.reply_text(
+        f"📅 {month}\n\n"
+        "روز مورد نظر را انتخاب کنید:",
+        reply_markup=reply_markup
+    )
+
+
+async def show_reflection(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = update.message.text
+
+    if not text.isdigit():
+        return
+
+    month = context.user_data.get("selected_month")
+
+    if not month:
+        return
+
+    day = int(text)
+
+    await update.message.reply_text(
+        f"📖 تأمل روز {day} {month}\n\n"
+        "متن تأمل این روز هنوز به ربات اضافه نشده است.\n\n"
+        "در مرحله بعد، متن تأمل‌های روزانه را وارد می        keyboard,
         resize_keyboard=True
     )
 
