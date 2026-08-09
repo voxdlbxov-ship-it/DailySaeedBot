@@ -116,10 +116,9 @@ async def show_reflection(update: Update, context: ContextTypes.DEFAULT_TYPE):
     day = int(text)
 
     await update.message.reply_text(
-        f"📖 تأمل روز {day} {month}\n\n"
-        "متن تأمل این روز هنوز به ربات اضافه نشده است.\n\n"
-        "در مرحله بعد، متن تأمل‌های روزانه را وارد می        keyboard,
-        resize_keyboard=True
+    f"📖 تأمل روز {day} {month}\n\n"
+    "متن تأمل این روز هنوز به ربات اضافه نشده است.\n\n"
+    "در مرحله بعد، متن تأمل‌های روزانه را وارد می‌کنیم. 🌱"
     )
 
     await update.message.reply_text(
