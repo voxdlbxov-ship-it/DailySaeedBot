@@ -1,3 +1,6 @@
+import os
+from threading import Thread
+
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import (
     Application,
