@@ -627,9 +627,6 @@ async def show_reflection(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-حتماً. **۳۱ فروردین** را بعد از روز ۳۰ اضافه کن:
-
-```python id="53817"
     if month == "فروردین" and day == 31:
         await update.message.reply_text(
             "📖 آزمون خود\n\n"
