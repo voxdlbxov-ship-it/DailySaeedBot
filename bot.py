@@ -7,7 +7,7 @@ from telegram.ext import (
     filters,
 )
 
-TOKEN = "توکن_جدید_خودت_را_اینجا_نویس"
+TOKEN = "8950654944:AAEiHQidHlJ0BSp8gcjrHu-CFMd8dmHXVC4"
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
