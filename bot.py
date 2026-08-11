@@ -1255,7 +1255,7 @@ async def show_reflection(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-    if month == "خرداد" and day == 6:
+        if month == "خرداد" and day == 6:
         await update.message.reply_text(
             "📖 گناهی از روی احساسات\n\n"
             "«هر روز سعی می‌کنیم کمی به سمت کمال خداوند پیش رویم. پس دیگر از روی احساسات گرفتار گناه نمی‌شویم.»\n\n"
