@@ -1172,7 +1172,7 @@ async def show_reflection(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-        if month == "خرداد" and day == 1:
+    if month == "خرداد" and day == 1:
         await update.message.reply_text(
             "📖 گام اوّل\n\n"
             "«ما ...» (اولین کلمه اولین گام)\n\n"
