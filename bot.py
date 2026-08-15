@@ -1274,7 +1274,7 @@ async def show_reflection(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
 
- if month == "خرداد" and day == 7:
+    if month == "خرداد" and day == 7:
         await update.message.reply_text(
         "📖 حقوق برابر\n\n"
         "«برای همه گروه‌های انجمن پیش آمده است که زمانی دوره‌های مشروب‌خوری منظم داشته باشند. "
@@ -1297,7 +1297,7 @@ async def show_reflection(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
 
- if month == "خرداد" and day == 8:
+    if month == "خرداد" and day == 8:
         await update.message.reply_text(
         "📖 تحمل واقعی\n\n"
         "«تنها شرط لازم برای عضویت در انجمن این است که بخواهی مشروب را کنار بگذاری.»\n\n"
